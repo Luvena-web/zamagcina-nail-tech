@@ -1,0 +1,14 @@
+# Ignore OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# Ignore local build output
+node_modules/
+build/
+dist/
+
+# Ignore system files
+*.tmp
+*.swp

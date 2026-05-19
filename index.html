@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamagcina Nail Tech - Premium Nails in Cape Town</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="Zamagcina Nail Tech Logo" class="logo-img">
+                <span>Zamagcina Nail Tech</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#booking" class="nav-link">Book Now</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Premium Nail Care</h1>
+            <p>Expert nail services in Cape Town</p>
+            <a href="#booking" class="cta-button">Book Your Appointment</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/portfolio-hero.png" alt="Professional nail art showcase">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <!-- Nail Services -->
+            <div class="service-category">
+                <h3>Nail Services</h3>
+                <div class="service-list">
+                    <div class="service-item">
+                        <h4>Standard Manicure</h4>
+                        <p class="duration">Duration: 90 minutes</p>
+                        <p class="price">R 100</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Gel Overlay</h4>
+                        <p class="duration">Duration: 90 minutes</p>
+                        <p class="price">R 70</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Nail Art</h4>
+                        <p class="duration">Duration: 90 minutes</p>
+                        <p class="price">R 115</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2>Our Work</h2>
+        <p class="portfolio-subtitle">Check out our latest nail art and styling work</p>
+        <div class="portfolio-gallery">
+            <div class="portfolio-item">
+                <img src="images/pink-french.jpg" alt="Pink French Tips">
+                <p>Pink French Tips</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/red-stiletto.jpg" alt="Red Stiletto Nails">
+                <p>Red Stiletto Nails</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/zebra-print.jpg" alt="Zebra Print Design">
+                <p>Zebra Print Design</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/yellow-gold.jpg" alt="Yellow French with Gold Art">
+                <p>Yellow French with Gold Art</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/short-red.jpg" alt="Short Red Polish">
+                <p>Short Red Polish</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <h2>Book Your Appointment</h2>
+        <p class="booking-subtitle">Select your service and choose an available time slot</p>
+        
+        <div class="booking-container">
+            <form id="bookingForm">
+                <!-- Service Selection -->
+                <div class="form-group">
+                    <label for="serviceType">Select Service Type:</label>
+                    <select id="serviceType" required>
+                        <option value="">-- Choose a service --</option>
+                        <optgroup label="Nail Services">
+                            <option value="manicure">Standard Manicure (90 min) - R 100</option>
+                            <option value="gel-overlay">Gel Overlay (90 min) - R 70</option>
+                            <option value="nail-art">Nail Art (90 min) - R 115</option>
+                        </optgroup>
+
+                    </select>
+                </div>
+
+
+
+                <!-- Date Selection -->
+                <div class="form-group">
+                    <label for="appointmentDate">Select Date:</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+
+                <!-- Time Slot Selection -->
+                <div class="form-group">
+                    <label for="timeSlots">Available Time Slots:</label>
+                    <div id="timeSlots" class="time-slots-container">
+                        <p class="info-text">Please select a service and date first</p>
+                    </div>
+                </div>
+
+                <!-- Client Information -->
+                <div class="form-group">
+                    <label for="clientName">Your Name:</label>
+                    <input type="text" id="clientName" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="clientPhone">WhatsApp Number:</label>
+                    <input type="tel" id="clientPhone" required placeholder="e.g., +27 XX XXX XXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="clientEmail">Email (Optional):</label>
+                    <input type="email" id="clientEmail" placeholder="your@email.com">
+                </div>
+
+                <!-- Summary -->
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <p><strong>Service:</strong> <span id="summaryService">-</span></p>
+                    <p><strong>Date:</strong> <span id="summaryDate">-</span></p>
+                    <p><strong>Time:</strong> <span id="summaryTime">-</span></p>
+                    <p><strong>Duration:</strong> <span id="summaryDuration">-</span></p>
+                    <p class="total-price"><strong>Total Price:</strong> <span id="summaryPrice">-</span></p>
+                </div>
+
+                <button type="submit" class="submit-button">Confirm Booking via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>Location</h3>
+                <p>2561 Qomoyi Street<br>Old Cross Road, Cape Town<br>Western Cape, South Africa</p>
+                <p><a href="https://maps.google.com/?q=2561+Qomoyi+Street+Old+Cross+Road+Cape+Town" target="_blank" class="gps-link">📍 View on Google Maps</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>Hours</h3>
+                <p>Monday - Saturday<br>06:30 AM - 04:30 PM<br>Sunday: Closed</p>
+            </div>
+            <div class="contact-item">
+                <h3>Contact</h3>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/27795224217" target="_blank">+27 79 522 4217</a></p>
+                <p><strong>Email:</strong> <a href="mailto:Zandileheleba9@gmail.com">Zandileheleba9@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Zamagcina Nail Tech. All rights reserved. | Expert nail services.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </a>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
