@@ -69,6 +69,33 @@ function setupEventListeners() {
     serviceSelect.addEventListener('change', handleServiceChange);
     dateInput.addEventListener('change', handleDateChange);
     bookingForm.addEventListener('submit', handleFormSubmit);
+
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+}
+
+function toggleMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const expanded = navMenu.classList.toggle('active');
+    mobileMenuToggle.classList.toggle('active', expanded);
+    mobileMenuToggle.setAttribute('aria-expanded', expanded);
+}
+
+function closeMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    if (navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
 }
 
 // Handle service selection change
