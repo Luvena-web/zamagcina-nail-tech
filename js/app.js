@@ -154,18 +154,17 @@ function generateTimeSlots() {
         const timeStr = formatTime(currentTime);
         const slotEndTime = new Date(currentTime.getTime() + duration * 60000);
 
-        // Check if slot end time is within operating hours
+        // Stop if the slot would run past closing time
         if (slotEndTime > endTime) {
             break;
         }
 
-        // Check if slot is available (not overlapping with booked slots)
+        // Check if slot overlaps with any booked reservation
         let isAvailable = true;
         for (let bookedSlot of dayBookedSlots) {
             const bookedStart = parseTime(bookedSlot.start);
             const bookedEnd = parseTime(bookedSlot.end);
 
-            // Check for overlap - if ANY part of the requested slot overlaps with a booked slot
             if ((currentTime >= bookedStart && currentTime < bookedEnd) ||
                 (slotEndTime > bookedStart && slotEndTime <= bookedEnd) ||
                 (currentTime <= bookedStart && slotEndTime >= bookedEnd)) {
@@ -174,12 +173,11 @@ function generateTimeSlots() {
             }
         }
 
-        if (isAvailable) {
-            slots.push({
-                time: timeStr,
-                endTime: formatTime(slotEndTime)
-            });
-        }
+        slots.push({
+            time: timeStr,
+            endTime: formatTime(slotEndTime),
+            available: isAvailable
+        });
 
         // Move to next 30-minute slot
         currentTime.setMinutes(currentTime.getMinutes() + 30);
@@ -193,8 +191,9 @@ function generateTimeSlots() {
 function renderTimeSlots(slots, selectedDate) {
     const timeSlotsContainer = document.getElementById('timeSlots');
 
+    const availableSlots = slots.filter(slot => slot.available);
     if (slots.length === 0) {
-        timeSlotsContainer.innerHTML = '<p class="info-text" style="grid-column: 1/-1;">No available slots for this date. Please select another date.</p>';
+        timeSlotsContainer.innerHTML = '<p class="info-text" style="grid-column: 1/-1;">No time slots available for this service and date.</p>';
         return;
     }
 
@@ -204,18 +203,27 @@ function renderTimeSlots(slots, selectedDate) {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'time-slot';
-        button.textContent = slot.time;
+        button.textContent = slot.available ? slot.time : `${slot.time} (Booked)`;
         button.dataset.time = slot.time;
         button.dataset.endTime = slot.endTime;
         button.dataset.date = selectedDate;
 
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            selectTimeSlot(this);
-        });
+        if (!slot.available) {
+            button.classList.add('booked');
+            button.disabled = true;
+        } else {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectTimeSlot(this);
+            });
+        }
 
         timeSlotsContainer.appendChild(button);
     });
+
+    if (availableSlots.length === 0) {
+        timeSlotsContainer.insertAdjacentHTML('beforeend', '<p class="info-text" style="grid-column: 1/-1;">No available slots for this date. Please select another date.</p>');
+    }
 }
 
 // Select a time slot
