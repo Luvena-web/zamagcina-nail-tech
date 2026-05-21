@@ -526,6 +526,7 @@ body {
     color: var(--rose-gold);
 }
 
+.contact-item a.gps-link,
 .gps-link {
     display: inline-block;
     margin-top: 0.5rem;
@@ -536,6 +537,12 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+}
+
+.contact-item a.gps-link:hover,
+.gps-link:hover {
+    background-color: var(--rose-gold);
+    color: var(--white);
 }
 
 .gps-link:hover {
